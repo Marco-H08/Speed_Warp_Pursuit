@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class BallController : MonoBehaviour
 {
     // Geschwindigkeit der Bewegung
-    public float speed = 500f;
+    public float speed = 700f;
 
     private Rigidbody rb;
     private float moveInput;
