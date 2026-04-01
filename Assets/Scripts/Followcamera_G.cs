@@ -1,5 +1,5 @@
 using UnityEngine;
-public class Followcamera : MonoBehaviour
+public class Followcamera_G : MonoBehaviour
 {
     [Header("Kamera-Einstellungen")]
     public Vector3 offset = new Vector3(0f, 5f, -10f);

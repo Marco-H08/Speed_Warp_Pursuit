@@ -14,7 +14,7 @@ public class ObstacleCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Obstacle"))
         {
             int finalScore = distanceCounter != null ? distanceCounter.GetCounter() : 0;
-            Game_Manager.Instance.GameOver(finalScore);
+            GameManager.Instance.GameOver(finalScore);
         }
     }
 }

@@ -2,9 +2,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class Game_Manager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    public static Game_Manager Instance;
+    public static GameManager Instance;
 
     [Header("UI Referenzen")]
     public GameObject gameOverPanel;
@@ -14,7 +14,6 @@ public class Game_Manager : MonoBehaviour
 
     void Awake()
     {
-        // Singleton damit andere Scripts drauf zugreifen können
         Instance = this;
     }
 
@@ -23,17 +22,22 @@ public class Game_Manager : MonoBehaviour
         if (isGameOver) return;
         isGameOver = true;
 
-        // Zeit anhalten
         Time.timeScale = 0f;
-
-        // Game Over Panel anzeigen
         gameOverPanel.SetActive(true);
         scoreText.text = "Distanz: " + finalScore;
+
+        // Counter ausblenden
+        GameObject ball = GameObject.Find("Ball");
+        if (ball != null)
+        {
+            DistanceCounter dc = ball.GetComponent<DistanceCounter>();
+            if (dc != null && dc.counterText != null)
+                dc.counterText.gameObject.SetActive(false);
+        }
     }
 
     public void RestartGame()
     {
-        // Zeit wieder starten
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

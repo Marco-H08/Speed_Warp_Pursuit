@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class DistanceCounter : MonoBehaviour
@@ -17,22 +16,21 @@ public class DistanceCounter : MonoBehaviour
 
     void Update()
     {
-        // Wie weit in Z-Richtung seit Start
-        float distanceZ = startPosition.z + transform.position.z;
+        // Nicht updaten wenn Game Over
+        if (Time.timeScale == 0f) return;
 
-        // Alle 25 Einheiten = 1 Punkt
+        float distanceZ = transform.position.z - startPosition.z;
         int newCounter = Mathf.FloorToInt(distanceZ / 25f);
 
-        // Nur erhöhen, nie verringern
         if (newCounter > counter)
         {
             counter = newCounter;
         }
 
-        // Anzeige aktualisieren
         if (counterText != null)
             counterText.text = "Distanz: " + counter;
     }
+
     public int GetCounter()
     {
         return counter;
