@@ -13,8 +13,22 @@ public class ObstacleCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            int finalScore = distanceCounter != null ? distanceCounter.GetCounter() : 0;
-            GameManager.Instance.GameOver(finalScore);
+            TriggerGameOver();
         }
+    }
+
+    // Neu: für KillZone (Trigger)
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("KillZone"))
+        {
+            TriggerGameOver();
+        }
+    }
+
+    void TriggerGameOver()
+    {
+        int finalScore = distanceCounter != null ? distanceCounter.GetCounter() : 0;
+        GameManager.Instance.GameOver(finalScore);
     }
 }

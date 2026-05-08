@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Obstacle
   - SpeedBoost
+  - KillZone
   layers:
   - Default
   - TransparentFX

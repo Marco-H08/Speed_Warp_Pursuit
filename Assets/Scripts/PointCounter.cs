@@ -28,7 +28,7 @@ public class DistanceCounter : MonoBehaviour
         }
 
         if (counterText != null)
-            counterText.text = "Distanz: " + counter;
+            counterText.text ="Distance: "+ counter;
     }
 
     public int GetCounter()
