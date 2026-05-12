@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     [Header("UI Referenzen")]
     public GameObject gameOverPanel;
     public TMP_Text scoreText;
-    public TMP_Text highscoreText; // Neu
+    public TMP_Text highscoreText;
 
     private bool isGameOver = false;
 
@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
         if (isGameOver) return;
         isGameOver = true;
 
-        // Highscore prüfen und speichern
         int highscore = PlayerPrefs.GetInt("Highscore", 0);
         if (finalScore > highscore)
         {
@@ -34,10 +33,9 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = 0f;
         gameOverPanel.SetActive(true);
-        scoreText.text = "Distance: " + finalScore;
-        highscoreText.text = "Highscore: " + highscore; // Neu
+        scoreText.text = "Distanz: " + finalScore;
+        highscoreText.text = "Highscore: " + highscore;
 
-        // Counter ausblenden
         GameObject ball = GameObject.Find("Ball");
         if (ball != null)
         {
