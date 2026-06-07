@@ -16,19 +16,17 @@ public class DistanceCounter : MonoBehaviour
 
     void Update()
     {
-        // Nicht updaten wenn Game Over
         if (Time.timeScale == 0f) return;
 
         float distanceZ = transform.position.z - startPosition.z;
         int newCounter = Mathf.FloorToInt(distanceZ / 25f);
 
         if (newCounter > counter)
-        {
             counter = newCounter;
-        }
 
-        if (counterText != null)
-            counterText.text ="Distance: "+ counter;
+        // Null-Check hinzugefügt
+        if (counterText != null && counterText.gameObject.activeInHierarchy)
+            counterText.text = "Distance: " + counter;
     }
 
     public int GetCounter()
